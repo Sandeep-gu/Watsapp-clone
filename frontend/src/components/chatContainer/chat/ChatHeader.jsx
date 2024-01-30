@@ -1,5 +1,7 @@
 import { MoreVert, Search } from "@mui/icons-material";
 import { Box, Typography, styled } from "@mui/material";
+import { useContext, useState, useEffect } from "react";
+import { AccountContext } from "../../../context/AccountProvider";
 import React from "react";
 
 const Header = styled(Box)`
@@ -23,7 +25,7 @@ const Name = styled(Typography)`
 const Status = styled(Typography)`
   margin-left: 12px !important;
   font-size: 12px;
-  color: rgb(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.6);
 `;
 
 const RightContainer = styled(Box)`
@@ -35,12 +37,25 @@ const RightContainer = styled(Box)`
   }
 `;
 function ChatHeader({ person }) {
+  const [activeUser, setActiveUser] = useState([]);
+  const { account, socket } = useContext(AccountContext);
+
+  useEffect(() => {
+    socket.current.on("getUsers", (data) => {
+      console.log(data);
+      setActiveUser(data);
+    });
+  }, [account]);
   return (
     <Header>
       <Image src={person.picture} alt="..." />
       <Box>
         <Name>{person.name}</Name>
-        <Status>Offline</Status>
+        <Status>
+          {activeUser.find((user) => user.sub === person.sub)
+            ? "Online"
+            : "Offline"}
+        </Status>
       </Box>
 
       <RightContainer>

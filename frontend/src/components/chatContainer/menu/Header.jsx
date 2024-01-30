@@ -7,10 +7,14 @@ import { RiChatNewFill } from "react-icons/ri";
 
 import HeaderMenu from "./HeaderMenu";
 import LeftDrawer from "../drawer/LeftDrawer";
+import { useContext } from "react";
+import { AccountContext } from "../../../context/AccountProvider";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const { account } = useContext(AccountContext);
+  console.log("account", account);
   const HeaderComponent = styled(Box)`
     height: 60px;
     background-color: #1f1f1f;
@@ -57,7 +61,8 @@ export default function Header() {
     <HeaderComponent>
       <ImgComponent onClick={(e) => handleDrawer(e)}>
         <img
-          src="https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg"
+          // src="https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg"
+          src={account?.picture}
           alt="..."
         />
       </ImgComponent>

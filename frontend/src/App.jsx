@@ -15,7 +15,6 @@ function App() {
           <Login />
         </AccountProvider>
       </GoogleOAuthProvider>
-      ;
     </>
   );
 }

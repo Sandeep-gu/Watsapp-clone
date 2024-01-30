@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { useContext } from "react";
-import { AcountContext } from "../../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const ImageContainer = styled(Box)`
   height: 130px;
@@ -38,7 +38,7 @@ const DescriptionContainer = styled(Box)`
   color: #4a4a4a;
 `;
 function Profile() {
-  const { account, setAccount } = useContext(AcountContext);
+  const { account, setAccount } = useContext(AccountContext);
   return (
     <>
       <ImageContainer>

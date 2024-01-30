@@ -12,6 +12,12 @@ const {
   conversationParticipateController,
   getConversationController,
 } = require("../Controller/ConversationParticipateController.js");
+
+const {
+  uploadFileController,
+} = require("../Controller/uploadFileController.js");
+
+const Upload = require("../Utils/Upload.js");
 //add data in the database
 router.post("/add_data", addDataController);
 
@@ -29,4 +35,7 @@ router.post("/add-message", addMessageController);
 
 //get all message of given id
 router.get("/get-message/:id", getMessageController);
+
+//file upload
+router.post("/uploadFile", Upload.single("file"), uploadFileController);
 module.exports = router;

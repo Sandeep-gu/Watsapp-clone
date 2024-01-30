@@ -4,9 +4,9 @@ import MenuContainer from "../components/chatContainer/MenuContainer";
 import EmptyChat from "../components/chatContainer/EmptyChat";
 import ChatBox from "../components/chatContainer/chat/ChatBox";
 import { useContext } from "react";
-import { AcountContext } from "../context/AccountProvider";
+import { AccountContext } from "../context/AccountProvider";
 export default function ChatContainer() {
-  const { person } = useContext(AcountContext);
+  const { person } = useContext(AccountContext);
   const dialogstyle = {
     height: "95%",
     width: "100%",

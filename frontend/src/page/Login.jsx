@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Box, AppBar, Toolbar, styled } from "@mui/material";
 import LoginBox from "../components/login/LoginBox";
-import { AcountContext } from "../context/AccountProvider";
+import { AccountContext } from "../context/AccountProvider";
 import ChatContainer from "./ChatContainer";
 export default function Login() {
-  const { account } = useContext(AcountContext);
+  const { account } = useContext(AccountContext);
   const Header = styled(AppBar)`
     height: 200px;
     background-color: #00bfa5;

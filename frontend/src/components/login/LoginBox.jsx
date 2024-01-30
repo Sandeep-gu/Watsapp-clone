@@ -4,7 +4,7 @@ import { qrCodeImage } from "../../constant";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useContext } from "react";
-import { AcountContext } from "../../context/AccountProvider.jsx";
+import { AccountContext } from "../../context/AccountProvider.jsx";
 import axios from "axios";
 const dialogstyle = {
   height: "90%",
@@ -44,7 +44,7 @@ const StyledList = styled(List)`
   }
 `;
 function LoginBox() {
-  const { setAccount } = useContext(AcountContext);
+  const { setAccount } = useContext(AccountContext);
 
   const onSuccessLogin = async (res) => {
     try {

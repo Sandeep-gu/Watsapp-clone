@@ -3,9 +3,9 @@ import React from "react";
 import ChatHeader from "./ChatHeader";
 import MessageChat from "./MessageChat";
 import { useContext } from "react";
-import { AcountContext } from "../../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 export default function ChatBox() {
-  const { person } = useContext(AcountContext);
+  const { person } = useContext(AccountContext);
   return (
     <Box>
       <ChatHeader person={person} />

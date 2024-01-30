@@ -3,7 +3,7 @@ import { Box, styled, Divider } from "@mui/material";
 import ConversationClient from "./ConversationClient";
 import axios from "axios";
 import { useContext } from "react";
-import { AcountContext } from "../../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const Component = styled(Box)`
   height: 81vh;
@@ -16,8 +16,10 @@ const StyleDivider = styled(Divider)`
   opacity: 0.6;
 `;
 function ConversationBox({ text }) {
-  const { account, setAccount } = useContext(AcountContext);
+  const { account, setAccount, socket, setActiveUsers } =
+    useContext(AccountContext);
   const [user, setUser] = useState();
+  const [socketData, setSocketData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,6 +45,14 @@ function ConversationBox({ text }) {
     };
     fetchData();
   }, [text]);
+
+  useEffect(() => {
+    socket.current.emit("addUsers", account);
+    socket.current.on("getUsers", (data) => {
+      console.log("user", data);
+    });
+  }, []);
+
   return (
     <>
       <Component>
